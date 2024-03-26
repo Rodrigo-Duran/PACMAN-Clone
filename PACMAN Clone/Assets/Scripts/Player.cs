@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
     private Rigidbody2D rb;
     private Vector2 _direction;
+    public GameController gameController;
 
     //Portals
     private int portalsTimer;
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
     //OnCollisionEnter2D
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // handle with collision between player and ghosts    
+        //OnEnterCollision(collision);
     }
 
     //OnTriggerEnter2D
@@ -122,7 +124,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "NormalItem")
         {
             collision.gameObject.SetActive(false);
-            //Debug.Log("+5 PONTOS");
+            gameController.score += 10;
         }
 
         //Collecting Great Items
@@ -130,10 +132,22 @@ public class Player : MonoBehaviour
         {
             Debug.Log("COLLISION - GREAT ITEM");
             collision.gameObject.SetActive(false);
+            gameController.score += 50;
+
+            StopAllCoroutines();
+
+            //RedGhost
             StartCoroutine(redGhostScript.MakeVulnerable());
+
+            //BlueGhost
             StartCoroutine(blueGhostScript.MakeVulnerable());
+
+            //YellowGhost
             StartCoroutine(yellowGhostScript.MakeVulnerable());
+
+            //PinkGhost
             StartCoroutine(pinkGhostScript.MakeVulnerable());
+            
         }
 
         //Entering in portals
@@ -164,6 +178,11 @@ public class Player : MonoBehaviour
             gameObject.transform.localPosition = portalUp.transform.localPosition;
             portalsTimer = 30;
         }
+    }
+
+    //OnEnterCollision
+    void OnEnterCollision(Collision2D collision)
+    {
     }
 
     #endregion

@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40714c64c4431734ea2b65a675555ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   spawnPoint: {fileID: 0}
 --- !u!114 &-988538663335777415
 MonoBehaviour:
@@ -198,7 +197,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323bd84f2d7954f4e96ecb4969f6265e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyesToLeft: {fileID: 21300000, guid: 53e0436d2eefb76419b5dbf60542df1e, type: 3}
-  eyesToRight: {fileID: 21300000, guid: 19748897606178f4087ca00258d73733, type: 3}
-  eyesToUp: {fileID: 21300000, guid: 5192326bd50aa714bae3ab1ad0a6eb7e, type: 3}
-  eyesToDown: {fileID: 21300000, guid: b5b35e6e2e30c9a4e977a8579d6e343d, type: 3}

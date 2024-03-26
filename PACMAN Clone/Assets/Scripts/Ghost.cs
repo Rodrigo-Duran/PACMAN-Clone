@@ -24,6 +24,7 @@ public class Ghost : MonoBehaviour
     private bool _vulnerability;
     private bool _almostOk;
     private bool _isAlive;
+    public GameController gameController;
     [SerializeField] GameObject spawnPoint;
 
     //Public
@@ -98,10 +99,8 @@ public class Ghost : MonoBehaviour
     }
 
     //MoveToSpawnPoint
-    public IEnumerator MoveToSpawnPoint()
+    public void MoveToSpawnPoint()
     {
-        
-        yield return new WaitForSeconds(5);
         this.gameObject.transform.localPosition = spawnPoint.transform.localPosition;
         _isAlive = true;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
@@ -116,6 +115,7 @@ public class Ghost : MonoBehaviour
     //MakeVulnerable
     public IEnumerator MakeVulnerable()
     {
+        _almostOk = false;
         _vulnerability = true;
         speed = 3;
         yield return new WaitForSeconds(7);
@@ -126,14 +126,13 @@ public class Ghost : MonoBehaviour
         speed = 5;
     }
 
-    //OnTriggerCollision
+    //OnEnterCollision
     void OnEnterCollision(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             if (_vulnerability)
             {
-                Debug.Log("GHOST IS DEAD");
                 Death();
             }
             else
@@ -146,15 +145,18 @@ public class Ghost : MonoBehaviour
     //Death
     void Death()
     {
+        Debug.Log("GHOST DIED"); ;
         _isAlive = false;
+        gameController.score += 1000;
         StopCoroutine(MakeVulnerable());
         _vulnerability = false;
         _almostOk = false;
         speed = 5;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
         Debug.Log("Ghost is Alive? " + _isAlive);
-        StartCoroutine(MoveToSpawnPoint());
+        MoveToSpawnPoint();
     }
 
     #endregion
+
 }
