@@ -50,6 +50,8 @@ public class Ghost : MonoBehaviour
         set { _isAlive = value; }
     }
 
+    public IEnumerator e;
+
     #endregion
 
     #region Methods
@@ -62,6 +64,7 @@ public class Ghost : MonoBehaviour
         _vulnerability = false;
         _almostOk = false;
         _isAlive = true;
+        e = MakeVulnerable();
     }
 
     //Update

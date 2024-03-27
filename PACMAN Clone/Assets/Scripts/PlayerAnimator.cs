@@ -56,22 +56,22 @@ public class PlayerAnimator : MonoBehaviour
         }
 
         //ROTATING
-        if (player.direction.x > 0) //Right
+        if (player.direction.x > 0 && Time.timeScale == 1) //Right
         {
             transform.eulerAngles = new Vector2(0, 0);
         }
 
-        if (player.direction.x < 0) //Left
+        if (player.direction.x < 0 && Time.timeScale == 1) //Left
         {
             transform.eulerAngles = new Vector2(0, 180);
         }
 
-        if (player.direction.y > 0) //Up
+        if (player.direction.y > 0 && Time.timeScale == 1) //Up
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
         }
 
-        if (player.direction.y < 0) //Down
+        if (player.direction.y < 0 && Time.timeScale == 1) //Down
         {
             transform.eulerAngles = new Vector3(0, 0, -90);
         }

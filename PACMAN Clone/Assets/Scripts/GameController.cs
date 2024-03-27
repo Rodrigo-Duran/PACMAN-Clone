@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 /* SCRIPT: GameController
@@ -22,6 +23,7 @@ public class GameController : MonoBehaviour
     private float _highScore;
     [SerializeField] private TextMeshProUGUI scoreLabel;
     [SerializeField] private TextMeshProUGUI highScoreLabel;
+    public Player player;
 
     //Public
 
@@ -52,6 +54,26 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         scoreLabel.text = _score.ToString();
+    }
+
+    //QuitGame
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    //PauseGame
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        //player.PauseGame();
+    }
+
+    //ResumeGame
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+       // player.ResumeGame();
     }
 
     #endregion
