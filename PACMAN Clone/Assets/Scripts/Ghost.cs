@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* SCRIPT: Ghost
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 23/03/2024
+ Last Update: 28/03/2024
 
- Function: Handle with ghosts' mechanichs
+ Function: Dealing with ghosts' mechanichs
 
  */
 
@@ -26,6 +28,8 @@ public class Ghost : MonoBehaviour
     private bool _isAlive;
     public GameController gameController;
     [SerializeField] GameObject spawnPoint;
+
+    //--------------------------------------------------
 
     //Public
     public Vector2 direction
@@ -54,7 +58,7 @@ public class Ghost : MonoBehaviour
 
     #endregion
 
-    #region Methods
+    #region MainMethods
 
     //Start
     private void Start()
@@ -70,7 +74,7 @@ public class Ghost : MonoBehaviour
     //Update
     void Update()
     {
-        OnInput();
+        //OnInput();
     }
 
     //FixedUpdate
@@ -87,7 +91,7 @@ public class Ghost : MonoBehaviour
 
     #endregion
 
-    #region HandleMovement
+    #region MovementHandler
 
     //OnInput
     void OnInput()
@@ -113,7 +117,7 @@ public class Ghost : MonoBehaviour
 
     #endregion
 
-    #region HandleCollisions
+    #region CollisionsHandler
 
     //MakeVulnerable
     public IEnumerator MakeVulnerable()
@@ -140,7 +144,7 @@ public class Ghost : MonoBehaviour
             }
             else
             {
-                //Fim de jogo
+                gameController.EndGame();
             }
         }
     }
@@ -150,7 +154,7 @@ public class Ghost : MonoBehaviour
     {
         Debug.Log("GHOST DIED"); ;
         _isAlive = false;
-        gameController.score += 1000;
+        GameController.score += 1000;
         StopCoroutine(MakeVulnerable());
         _vulnerability = false;
         _almostOk = false;
@@ -161,5 +165,4 @@ public class Ghost : MonoBehaviour
     }
 
     #endregion
-
 }

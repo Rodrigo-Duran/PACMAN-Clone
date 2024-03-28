@@ -10,9 +10,9 @@ using UnityEngine.UIElements;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 22/03/2024
+ Last Update: 28/03/2024
 
- Function: Handle with player's mechanichs
+ Function: Dealing with player's mechanichs
 
  */
 
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region Methods
+    #region MainMethods
 
     //Start
     private void Start()
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         OnInput();
-        CheckPortalsTimer();
+        DecreasePortalsTimer();
     }
 
     //FixedUpdate
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region HandleMovement
+    #region MovementHandler
 
     //OnInput
     void OnInput()
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region HandleCollisions
+    #region CollisionsHandler
 
     //OnTriggerCollision
     void OnTriggerCollision(Collider2D collision)
@@ -124,7 +124,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "NormalItem")
         {
             collision.gameObject.SetActive(false);
-            gameController.score += 10;
+            gameController.collectibles--;
+            GameController.score += 10;
         }
 
         //Collecting Great Items
@@ -132,7 +133,8 @@ public class Player : MonoBehaviour
         {
             Debug.Log("COLLISION - GREAT ITEM");
             collision.gameObject.SetActive(false);
-            gameController.score += 50;
+            gameController.collectibles--;
+            GameController.score += 50;
 
             StopAllCoroutines();
 
@@ -187,10 +189,10 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region HandlePortals
+    #region PortalsHandler
 
-    //CheckPortalsTimer
-    void CheckPortalsTimer()
+    //DecreasePortalsTimer
+    void DecreasePortalsTimer()
     {
         if (portalsTimer > 0) portalsTimer--;
     }

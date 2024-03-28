@@ -7,9 +7,9 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 23/03/2024
+ Last Update: 28/03/2024
 
- Function: Handle with ghosts' animations  
+ Function: Dealing with ghosts' animations  
 
  */
 
@@ -24,7 +24,7 @@ public class GhostAnimator : MonoBehaviour
 
     #endregion
 
-    #region Methods
+    #region MainMethods
 
     //Start
     private void Start()
@@ -42,7 +42,7 @@ public class GhostAnimator : MonoBehaviour
 
     #endregion
 
-    #region HandleMovement
+    #region MovementHandler
 
     //OnMove
     void OnMove()

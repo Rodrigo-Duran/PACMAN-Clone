@@ -9,7 +9,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  26/03/2024
- Last Update: 26/03/2024
+ Last Update: 28/03/2024
 
  */
 
@@ -19,63 +19,98 @@ public class GameController : MonoBehaviour
     #region Components
 
     //Private
-    private float _score;
-    private float _highScore;
+    public static float score;
+    private int _collectibles = 0;
     [SerializeField] private TextMeshProUGUI scoreLabel;
     [SerializeField] private TextMeshProUGUI highScoreLabel;
-    public Player player;
+
+    //--------------------------------------------------
 
     //Public
 
-    public float score
+    /*public float score
     {
         get { return _score; }
         set { _score = value; }
     }
-
-    public float highScore
+    */
+    public int collectibles
     {
-        get { return _highScore; }
-        set { _highScore = value; }
+        get { return _collectibles; }
+        set { _collectibles = value; }
     }
+
+    public static float highScore;
 
     #endregion
 
-    #region Methods
+    #region MainMethods
 
     //Start
     private void Start()
     {
-        _score = 0;
-        _highScore = 0;
+        Debug.Log("Start - High Score: " + highScore);
+        highScoreLabel.text = highScore.ToString();
+        score = 0;
+        _collectibles += 6;
     }
 
     //Update
     private void Update()
     {
-        scoreLabel.text = _score.ToString();
+        scoreLabel.text = score.ToString();
+        WinGame();
     }
+
+    #endregion
+
+    #region GameHandler
 
     //QuitGame
     public void QuitGame()
     {
-        Application.Quit();
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 
     //PauseGame
     public void PauseGame()
     {
         Time.timeScale = 0;
-        //player.PauseGame();
     }
 
     //ResumeGame
     public void ResumeGame()
     {
         Time.timeScale = 1;
-       // player.ResumeGame();
+    }
+
+    //EndGame
+    public void EndGame()
+    {
+        CheckHighScore();
+        SceneManager.LoadSceneAsync("GameOver");
+    }
+
+    //WinGame
+    public void WinGame()
+    {
+        if(_collectibles == 0)
+        {
+            Debug.Log("YOU WIN");
+            CheckHighScore();
+            SceneManager.LoadSceneAsync("GameWin");
+        }
+    }
+
+    //CheckHighScore
+    public void CheckHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+        }
     }
 
     #endregion
-
 }

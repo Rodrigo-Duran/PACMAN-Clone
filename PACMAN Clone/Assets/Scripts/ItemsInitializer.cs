@@ -6,7 +6,7 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  25/03/2024
- Last Update: 25/03/2024
+ Last Update: 28/03/2024
 
  Function: Initializing all normal items
 
@@ -18,13 +18,14 @@ public class ItemsInitializer : MonoBehaviour
 
     //Private
     [SerializeField] private GameObject startPosition;
+    [SerializeField] private GameController gameController;
     private GameObject ItemPrefab;
     private float y;
     private List<List<float>> listOfX;
 
     #endregion
 
-    #region Methods
+    #region MainMethods
 
     //Start
     private void Start()
@@ -32,12 +33,15 @@ public class ItemsInitializer : MonoBehaviour
         y = startPosition.transform.position.y;
         listOfX = new List<List<float>>();
         ItemPrefab = Resources.Load<GameObject>("Item");
-        ListOfPositions();
+        CreateListOfPositions();
         CreatePrefabs(listOfX);
     }
+    #endregion
+
+    #region PrefabsHandler
 
     //CreateListOfPositions
-    private void ListOfPositions()
+    private void CreateListOfPositions()
     {
         //Positions in X for each position in Y
 
@@ -73,6 +77,7 @@ public class ItemsInitializer : MonoBehaviour
             foreach (float j in list[cont])
             {
                 Instantiate(ItemPrefab, new Vector2(j, i), Quaternion.identity);
+                gameController.collectibles++;
             }
             if (list.Count - 1 > cont) cont++;
         }

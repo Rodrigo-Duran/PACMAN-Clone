@@ -17684,6 +17684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {fileID: 1045995581}
+  gameController: {fileID: 1953812907}
 --- !u!1 &990121525
 GameObject:
   m_ObjectHideFlags: 0
@@ -17951,9 +17952,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 19748897606178f4087ca00258d73733, type: 3}
     - target: {fileID: 884195880499134486, guid: 1c90496a4e60b3541826bfb49af9057a, type: 3}
+      propertyPath: portalUp
+      value: 
+      objectReference: {fileID: 342405269}
+    - target: {fileID: 884195880499134486, guid: 1c90496a4e60b3541826bfb49af9057a, type: 3}
+      propertyPath: portalDown
+      value: 
+      objectReference: {fileID: 990121525}
+    - target: {fileID: 884195880499134486, guid: 1c90496a4e60b3541826bfb49af9057a, type: 3}
+      propertyPath: portalLeft
+      value: 
+      objectReference: {fileID: 1584425013}
+    - target: {fileID: 884195880499134486, guid: 1c90496a4e60b3541826bfb49af9057a, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 698543030}
+    - target: {fileID: 884195880499134486, guid: 1c90496a4e60b3541826bfb49af9057a, type: 3}
+      propertyPath: portalRight
+      value: 
+      objectReference: {fileID: 1925288070}
     - target: {fileID: 884195880499134486, guid: 1c90496a4e60b3541826bfb49af9057a, type: 3}
       propertyPath: gameController
       value: 
@@ -18229,9 +18246,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: f66342e7a78912646b7f60add6f8b0e5, type: 2}
     - target: {fileID: 1387100032481911907, guid: a5025acd058695b4e80692aaf21f5e84, type: 3}
+      propertyPath: portalUp
+      value: 
+      objectReference: {fileID: 342405269}
+    - target: {fileID: 1387100032481911907, guid: a5025acd058695b4e80692aaf21f5e84, type: 3}
+      propertyPath: portalDown
+      value: 
+      objectReference: {fileID: 990121525}
+    - target: {fileID: 1387100032481911907, guid: a5025acd058695b4e80692aaf21f5e84, type: 3}
+      propertyPath: portalLeft
+      value: 
+      objectReference: {fileID: 1584425013}
+    - target: {fileID: 1387100032481911907, guid: a5025acd058695b4e80692aaf21f5e84, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 698543030}
+    - target: {fileID: 1387100032481911907, guid: a5025acd058695b4e80692aaf21f5e84, type: 3}
+      propertyPath: portalRight
+      value: 
+      objectReference: {fileID: 1925288070}
     - target: {fileID: 1387100032481911907, guid: a5025acd058695b4e80692aaf21f5e84, type: 3}
       propertyPath: gameController
       value: 
@@ -25443,9 +25476,25 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -550132212122390645, guid: 437efdcea6416a94b9ee714e782a76a4, type: 3}
+      propertyPath: portalUp
+      value: 
+      objectReference: {fileID: 342405269}
+    - target: {fileID: -550132212122390645, guid: 437efdcea6416a94b9ee714e782a76a4, type: 3}
+      propertyPath: portalDown
+      value: 
+      objectReference: {fileID: 990121525}
+    - target: {fileID: -550132212122390645, guid: 437efdcea6416a94b9ee714e782a76a4, type: 3}
+      propertyPath: portalLeft
+      value: 
+      objectReference: {fileID: 1584425013}
+    - target: {fileID: -550132212122390645, guid: 437efdcea6416a94b9ee714e782a76a4, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 698543030}
+    - target: {fileID: -550132212122390645, guid: 437efdcea6416a94b9ee714e782a76a4, type: 3}
+      propertyPath: portalRight
+      value: 
+      objectReference: {fileID: 1925288070}
     - target: {fileID: -550132212122390645, guid: 437efdcea6416a94b9ee714e782a76a4, type: 3}
       propertyPath: gameController
       value: 
@@ -25644,7 +25693,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreLabel: {fileID: 1647265078}
   highScoreLabel: {fileID: 359959116}
-  player: {fileID: 286258162}
 --- !u!4 &1953812908
 Transform:
   m_ObjectHideFlags: 0
@@ -25877,9 +25925,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 19748897606178f4087ca00258d73733, type: 3}
     - target: {fileID: 1030497883186380890, guid: 4bf4712ecfe982a479b735535edfffd7, type: 3}
+      propertyPath: portalUp
+      value: 
+      objectReference: {fileID: 342405269}
+    - target: {fileID: 1030497883186380890, guid: 4bf4712ecfe982a479b735535edfffd7, type: 3}
+      propertyPath: portalDown
+      value: 
+      objectReference: {fileID: 990121525}
+    - target: {fileID: 1030497883186380890, guid: 4bf4712ecfe982a479b735535edfffd7, type: 3}
+      propertyPath: portalLeft
+      value: 
+      objectReference: {fileID: 1584425013}
+    - target: {fileID: 1030497883186380890, guid: 4bf4712ecfe982a479b735535edfffd7, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 698543030}
+    - target: {fileID: 1030497883186380890, guid: 4bf4712ecfe982a479b735535edfffd7, type: 3}
+      propertyPath: portalRight
+      value: 
+      objectReference: {fileID: 1925288070}
     - target: {fileID: 1030497883186380890, guid: 4bf4712ecfe982a479b735535edfffd7, type: 3}
       propertyPath: gameController
       value: 

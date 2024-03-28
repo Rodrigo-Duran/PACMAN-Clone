@@ -7,9 +7,9 @@ using UnityEngine.UIElements;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 22/03/2024
+ Last Update: 28/03/2024
 
- Function: Handle with player's animations
+ Function: Dealing with player's animations
 
  */
 
@@ -25,7 +25,7 @@ public class PlayerAnimator : MonoBehaviour
 
     #endregion
 
-    #region Methods
+    #region MainMethods
 
     //Start
     void Start()
@@ -44,7 +44,7 @@ public class PlayerAnimator : MonoBehaviour
 
     #endregion
 
-    #region HandleMovement
+    #region MovementHandler
 
     //OnMove
     void OnMove()
