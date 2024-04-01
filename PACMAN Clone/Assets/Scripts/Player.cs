@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 28/03/2024
+ Last Update: 01/04/2024
 
  Function: Dealing with player's mechanichs
 
@@ -21,10 +21,13 @@ public class Player : MonoBehaviour
     #region Components
 
     //Private
-    [SerializeField] private float speed;
+    private float speed;
     private Rigidbody2D rb;
     private Vector2 _direction;
     public GameController gameController;
+    private List<string> directionCode;
+    private float rayDistance;
+    [SerializeField] private LayerMask rayLayer;
 
     //Portals
     private int portalsTimer;
@@ -60,6 +63,9 @@ public class Player : MonoBehaviour
     {
         //Player
         rb = GetComponent<Rigidbody2D>();
+        speed = 5;
+        directionCode = new List<string>() { "L" };
+        rayDistance = (float)0.5;
 
         //Portals
         portalsTimer = 30;
@@ -85,12 +91,6 @@ public class Player : MonoBehaviour
         
     }
 
-    //OnCollisionEnter2D
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //OnEnterCollision(collision);
-    }
-
     //OnTriggerEnter2D
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -104,13 +104,46 @@ public class Player : MonoBehaviour
     //OnInput
     void OnInput()
     {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) //Up
+        {
+            _direction = Vector2.up;
+        }
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) //Left
+        {
+            _direction = Vector2.left;
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) //Down
+        {
+            _direction = Vector2.down;
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) //Right
+        {
+            _direction = Vector2.right;
+        }
         _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
     //OnMove
     void OnMove()
     {
-        rb.MovePosition(rb.position + _direction * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + _direction * speed * Time.fixedDeltaTime);   
+    }
+
+    //CheckIfCanMoveDirection
+    bool CheckIfCanMoveDirection(Vector2 direction)
+    {
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, direction, rayDistance, rayLayer);
+        Vector3 endPoint = transform.position * rayDistance;
+
+        Debug.DrawLine(transform.position, transform.position + endPoint, Color.green);
+        if (hit2D.collider == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     #endregion
@@ -180,11 +213,6 @@ public class Player : MonoBehaviour
             gameObject.transform.localPosition = portalUp.transform.localPosition;
             portalsTimer = 30;
         }
-    }
-
-    //OnEnterCollision
-    void OnEnterCollision(Collision2D collision)
-    {
     }
 
     #endregion

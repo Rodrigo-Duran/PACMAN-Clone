@@ -6,7 +6,7 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  25/03/2024
- Last Update: 28/03/2024
+ Last Update: 01/04/2024
 
  Function: Initializing all normal items
 
@@ -46,10 +46,10 @@ public class ItemsInitializer : MonoBehaviour
         //Positions in X for each position in Y
 
         /*0*/ /*Y = 8.5*/   listOfX.Add(new List<float> { (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-7.5, (float)-6.5, (float)-5.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)0.5, (float)1.5, (float)2.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*1*/ /*Y = 7.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-12.5, (float)-8.5, (float)-5.5, (float)-3.5, (float)0.5, (float)2.5, (float)4.5, (float)9.5, (float)11.5, (float)14.5, (float)19.5 });
-        /*2*/ /*Y = 6.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-3.5, (float)0.5, (float)2.5, (float)3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)10.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*3*/ /*Y = 5.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)0.5, (float)4.5, (float)9.5, (float)14.5, (float)16.5});
-        /*4*/ /*Y = 4.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)0.5, (float)1.5, (float)2.5, (float)3.5, (float)4.5, (float)9.5, (float)10.5, (float)11.5, (float)12.5, (float)14.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
+        /*1*/ /*Y = 7.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-12.5, (float)-8.5, (float)-5.5, (float)-3.5, (float)-0.5, (float)2.5, (float)4.5, (float)9.5, (float)11.5, (float)14.5, (float)19.5 });
+        /*2*/ /*Y = 6.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-3.5, (float)-0.5, (float)2.5, (float)3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)10.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
+        /*3*/ /*Y = 5.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)0.5, (float)1.5, (float)2.5, (float)4.5, (float)9.5, (float)14.5, (float)16.5});
+        /*4*/ /*Y = 4.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)0.5, (float)2.5, (float)4.5, (float)9.5, (float)10.5, (float)11.5, (float)12.5, (float)14.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
         /*5*/ /*Y = 3.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)12.5, (float)14.5, (float)19.5 });
         /*6*/ /*Y = 2.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-7.5,(float)-6.5, (float)-3.5, (float)4.5, (float)9.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
         /*7*/ /*Y = 1.5*/   listOfX.Add(new List<float> { (float)-12.5, (float)-10.5, (float)-6.5, (float)-3.5, (float)4.5, (float)9.5, (float)11.5, (float)13.5 });

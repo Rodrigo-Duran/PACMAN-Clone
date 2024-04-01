@@ -50,22 +50,22 @@ public class GhostAnimator : MonoBehaviour
         //ANIMATIONS
         if (ghost.isAlive)
         {
-            if (ghost.direction.x > 0 && !ghost.vulnerability) //Right
+            if (ghost.direction == 1 && !ghost.vulnerability) //Right
             {
                 animator.SetInteger("transition", 1);
             }
 
-            if (ghost.direction.x < 0 && !ghost.vulnerability) //Left
+            if (ghost.direction == -1 && !ghost.vulnerability) //Left
             {
                 animator.SetInteger("transition", 2);
             }
 
-            if (ghost.direction.y > 0 && !ghost.vulnerability) //Up
+            if (ghost.direction == 2 && !ghost.vulnerability) //Up
             {
                 animator.SetInteger("transition", 3);
             }
 
-            if (ghost.direction.y < 0 && !ghost.vulnerability) //Down
+            if (ghost.direction == -2 && !ghost.vulnerability) //Down
             {
                 animator.SetInteger("transition", 4);
             }
@@ -78,22 +78,22 @@ public class GhostAnimator : MonoBehaviour
         }
         else
         {
-            if (ghost.direction.x > 0) //Right
+            if (rb.position.x > 0) //Right
             {
                 animator.SetInteger("transition", 5);
             }
 
-            if (ghost.direction.x < 0) //Left
+            if (rb.position.x < 0) //Left
             {
                 animator.SetInteger("transition", 6);
             }
 
-            if (ghost.direction.y > 0) //Up
+            if (rb.position.y > 0) //Up
             {
                 animator.SetInteger("transition", 7);
             }
 
-            if (ghost.direction.y < 0) //Down
+            if (rb.position.y < 0) //Down
             {
                 animator.SetInteger("transition", 8);
             }

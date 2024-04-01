@@ -4,12 +4,13 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 /* SCRIPT: Ghost
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 28/03/2024
+ Last Update: 01/04/2024
 
  Function: Dealing with ghosts' mechanichs
 
@@ -20,19 +21,23 @@ public class Ghost : MonoBehaviour
     #region Components
 
     //Private
-    private float speed;
     private Rigidbody2D rb;
-    private Vector2 _direction;
+    private CircleCollider2D cc;
+    private GhostAIMovement ghostAI;
+    private Rigidbody2D playerRB;
+    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private Player player;
+
+    private int _direction;
+    private float _speed;
     private bool _vulnerability;
     private bool _almostOk;
     private bool _isAlive;
-    public GameController gameController;
-    [SerializeField] GameObject spawnPoint;
 
     //--------------------------------------------------
 
     //Public
-    public Vector2 direction
+    public int direction
     {
         get { return _direction; }
         set { _direction = value; }
@@ -54,7 +59,14 @@ public class Ghost : MonoBehaviour
         set { _isAlive = value; }
     }
 
+    public float speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
+    }
+
     public IEnumerator e;
+    public GameController gameController;
 
     #endregion
 
@@ -64,23 +76,27 @@ public class Ghost : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        speed = 5;
+        cc = GetComponent<CircleCollider2D>();
+        ghostAI = GetComponent<GhostAIMovement>();
+        _direction = 0;
+        _speed = 5;
         _vulnerability = false;
         _almostOk = false;
         _isAlive = true;
+        playerRB = player.GetComponent<Rigidbody2D>();
         e = MakeVulnerable();
     }
 
     //Update
     void Update()
     {
-        //OnInput();
+        ghostAI.OnCheck();
     }
 
     //FixedUpdate
     private void FixedUpdate()
     {
-        OnMove();
+        ghostAI.OnMove();
     }
 
     //OnCollisionEnter2D
@@ -89,30 +105,9 @@ public class Ghost : MonoBehaviour
         OnEnterCollision(collision);
     }
 
-    #endregion
-
-    #region MovementHandler
-
-    //OnInput
-    void OnInput()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
-
-    //OnMove
-    void OnMove()
-    {
-        rb.MovePosition(rb.position + _direction * speed * Time.fixedDeltaTime);
-    }
-
-    //MoveToSpawnPoint
-    public void MoveToSpawnPoint()
-    {
-        this.gameObject.transform.localPosition = spawnPoint.transform.localPosition;
-        _isAlive = true;
-        this.gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
-        Debug.Log("Ghost is Alive? " + _isAlive);
-        Debug.Log("GHOST ALIVE AGAIN");
+        OnExitCollison(collision);
     }
 
     #endregion
@@ -124,13 +119,13 @@ public class Ghost : MonoBehaviour
     {
         _almostOk = false;
         _vulnerability = true;
-        speed = 3;
+        _speed = 3;
         yield return new WaitForSeconds(7);
         _almostOk = true;
         yield return new WaitForSeconds(3);
         _almostOk = false;
         _vulnerability = false;
-        speed = 5;
+        _speed = 5;
     }
 
     //OnEnterCollision
@@ -147,6 +142,21 @@ public class Ghost : MonoBehaviour
                 gameController.EndGame();
             }
         }
+
+        if (collision.gameObject.tag == "Ghost")
+        {
+            //Debug.Log("ENTER COLLISION");
+            cc.isTrigger = true;
+        }
+    }
+    
+    void OnExitCollison(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ghost") 
+        {
+            //Debug.Log("EXIT COLLISION");
+            cc.isTrigger = false; 
+        }
     }
 
     //Death
@@ -158,10 +168,9 @@ public class Ghost : MonoBehaviour
         StopCoroutine(MakeVulnerable());
         _vulnerability = false;
         _almostOk = false;
-        speed = 5;
+        _speed = 5;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
         Debug.Log("Ghost is Alive? " + _isAlive);
-        MoveToSpawnPoint();
     }
 
     #endregion
