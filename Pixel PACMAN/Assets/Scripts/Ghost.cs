@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 01/04/2024
+ Last Update: 02/04/2024
 
  Function: Dealing with ghosts' mechanichs
 
@@ -79,7 +79,7 @@ public class Ghost : MonoBehaviour
         cc = GetComponent<CircleCollider2D>();
         ghostAI = GetComponent<GhostAIMovement>();
         _direction = 0;
-        _speed = 5;
+        _speed = 5f;
         _vulnerability = false;
         _almostOk = false;
         _isAlive = true;
@@ -119,13 +119,13 @@ public class Ghost : MonoBehaviour
     {
         _almostOk = false;
         _vulnerability = true;
-        _speed = 3;
+        _speed = 3f;
         yield return new WaitForSeconds(7);
         _almostOk = true;
         yield return new WaitForSeconds(3);
         _almostOk = false;
         _vulnerability = false;
-        _speed = 5;
+        _speed = 5f;
     }
 
     //OnEnterCollision
@@ -168,7 +168,7 @@ public class Ghost : MonoBehaviour
         StopCoroutine(MakeVulnerable());
         _vulnerability = false;
         _almostOk = false;
-        _speed = 5;
+        _speed = 5f;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
         Debug.Log("Ghost is Alive? " + _isAlive);
     }

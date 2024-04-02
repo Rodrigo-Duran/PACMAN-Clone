@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 01/04/2024
+ Last Update: 02/04/2024
 
  Function: Dealing with player's mechanichs
 
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     {
         //Player
         rb = GetComponent<Rigidbody2D>();
-        speed = 5;
+        speed = 5f;
         directionCode = new List<string>() { "L" };
         rayDistance = (float)0.5;
 

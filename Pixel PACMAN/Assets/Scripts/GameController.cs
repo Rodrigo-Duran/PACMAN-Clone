@@ -9,7 +9,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  26/03/2024
- Last Update: 28/03/2024
+ Last Update: 02/04/2024
 
  */
 
@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Start - High Score: " + highScore);
         highScoreLabel.text = highScore.ToString();
-        score = 0;
+        score = 0f;
         _collectibles += 6;
     }
 

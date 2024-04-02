@@ -7,7 +7,7 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  01/04/2024
- Last Update: 01/04/2024
+ Last Update: 02/04/2024
 
  */
 
@@ -38,7 +38,7 @@ public class GhostAIMovement : MonoBehaviour
         ghost = GetComponent<Ghost>();
         directionIndex = 1;
         currentDirection = directions[directionIndex];
-        rayDistance = (float)0.5;
+        rayDistance = 0.5f;
     }
 
     #endregion

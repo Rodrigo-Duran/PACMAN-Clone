@@ -6,7 +6,7 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  25/03/2024
- Last Update: 01/04/2024
+ Last Update: 02/04/2024
 
  Function: Initializing all normal items
 
@@ -45,25 +45,25 @@ public class ItemsInitializer : MonoBehaviour
     {
         //Positions in X for each position in Y
 
-        /*0*/ /*Y = 8.5*/   listOfX.Add(new List<float> { (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-7.5, (float)-6.5, (float)-5.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)0.5, (float)1.5, (float)2.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*1*/ /*Y = 7.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-12.5, (float)-8.5, (float)-5.5, (float)-3.5, (float)-0.5, (float)2.5, (float)4.5, (float)9.5, (float)11.5, (float)14.5, (float)19.5 });
-        /*2*/ /*Y = 6.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-3.5, (float)-0.5, (float)2.5, (float)3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)10.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*3*/ /*Y = 5.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)0.5, (float)1.5, (float)2.5, (float)4.5, (float)9.5, (float)14.5, (float)16.5});
-        /*4*/ /*Y = 4.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)0.5, (float)2.5, (float)4.5, (float)9.5, (float)10.5, (float)11.5, (float)12.5, (float)14.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*5*/ /*Y = 3.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-12.5, (float)-8.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)12.5, (float)14.5, (float)19.5 });
-        /*6*/ /*Y = 2.5*/   listOfX.Add(new List<float> { (float)-18.5, (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-7.5,(float)-6.5, (float)-3.5, (float)4.5, (float)9.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*7*/ /*Y = 1.5*/   listOfX.Add(new List<float> { (float)-12.5, (float)-10.5, (float)-6.5, (float)-3.5, (float)4.5, (float)9.5, (float)11.5, (float)13.5 });
-        /*8*/ /*Y = 0.5*/   listOfX.Add(new List<float> { (float)-12.5, (float)-10.5, (float)-9.5, (float)-6.5, (float)-3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)11.5, (float)13.5 });
-        /*9*/ /*Y = -0.5*/  listOfX.Add(new List<float> { (float)-12.5, (float)-8.5, (float)-6.5, (float)-3.5, (float)4.5, (float)9.5, (float)11.5, (float)13.5 });
-        /*10*/ /*Y = -1.5*/ listOfX.Add(new List<float> { (float)-12.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-7.5, (float)-6.5, (float)-5.5, (float)-4.5, (float) - 3.5, (float)4.5, (float)9.5, (float)11.5, (float)13.5 });
-        /*11*/ /*Y = -2.5*/ listOfX.Add(new List<float> { (float)-12.5, (float)-10.5, (float)-8.5, (float)-3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)10.5, (float)11.5, (float)13.5 });
-        /*12*/ /*Y = -3.5*/ listOfX.Add(new List<float> { (float)-18.5, (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-8.5, (float)-7.5, (float)-6.5, (float) - 5.5, (float)-3.5, (float)4.5, (float)9.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*13*/ /*Y = -4.5*/ listOfX.Add(new List<float> { (float)-18.5, (float)-12.5, (float)-10.5, (float)-5.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)0.5, (float)1.5, (float)2.5, (float)3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)9.5, (float)10.5, (float) 11.5, (float)13.5, (float)19.5 });
-        /*14*/ /*Y = -5.5*/ listOfX.Add(new List<float> { (float)-18.5, (float)-12.5, (float)-10.5, (float)-8.5, (float)-7.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-3.5, (float)3.5, (float)7.5, (float)9.5, (float)11.5, (float)13.5, (float)19.5 });
-        /*15*/ /*Y = -6.5*/ listOfX.Add(new List<float> { (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-10.5, (float)-8.5, (float)-3.5, (float)-2.5, (float)-1.5, (float)-0.5, (float)1.5, (float)2.5, (float)3.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float) 9.5, (float)11.5, (float)12.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
-        /*16*/ /*Y = -7.5*/ listOfX.Add(new List<float> { (float)-18.5, (float)-14.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float) - 8.5, (float)-2.5, (float)-0.5, (float)1.5, (float)3.5, (float)4.5, (float)5.5, (float)7.5, (float)9.5, (float)11.5, (float)19.5 });
-        /*17*/ /*Y = -8.5*/ listOfX.Add(new List<float> { (float)-18.5, (float)-14.5, (float)-12.5, (float)-9.5, (float)-6.5, (float)-5.5, (float)-4.5, (float)-2.5, (float)-0.5, (float)1.5, (float)7.5, (float)9.5, (float)11.5, (float)19.5 });
-        /*18*/ /*Y = -9.5*/ listOfX.Add(new List<float> { (float)-18.5, (float)-17.5, (float)-16.5, (float)-15.5, (float)-14.5, (float)-13.5, (float)-12.5, (float)-11.5, (float)-10.5, (float)-9.5, (float)-8.5, (float)-7.5, (float) - 6.5, (float)-4.5, (float)-3.5, (float)-2.5, (float)-0.5, (float)0.5, (float)2.5, (float)3.5, (float)4.5, (float)5.5, (float)6.5, (float)7.5, (float)8.5, (float)9.5, (float)12.5, (float)13.5, (float)14.5, (float)15.5, (float)16.5, (float)17.5, (float)18.5, (float)19.5 });
+        /*0*/ /*Y = 8.5*/ listOfX.Add(new List<float> { -17.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -11.5f, -10.5f, -9.5f, -8.5f, -7.5f, -6.5f, -5.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 4.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 11.5f, 12.5f, 13.5f, 14.5f, 15.5f, 16.5f, 17.5f, 18.5f, 19.5f });
+        /*1*/ /*Y = 7.5*/ listOfX.Add(new List<float> { -18.5f, -16.5f, -12.5f, -8.5f, -5.5f, -3.5f, -0.5f, 2.5f, 4.5f, 9.5f, 11.5f, 14.5f, 19.5f });
+        /*2*/ /*Y = 6.5*/ listOfX.Add(new List<float> { -18.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -8.5f, -6.5f, -5.5f, -4.5f, -3.5f, -0.5f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 10.5f, 11.5f, 12.5f, 13.5f, 14.5f, 16.5f, 17.5f, 18.5f, 19.5f });
+        /*3*/ /*Y = 5.5*/ listOfX.Add(new List<float> { -18.5f, -16.5f, -12.5f, -11.5f, -10.5f, -9.5f, -8.5f, -6.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 4.5f, 9.5f, 14.5f, 16.5f });
+        /*4*/ /*Y = 4.5*/ listOfX.Add(new List<float> { -18.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -8.5f, -6.5f, -3.5f, 0.5f, 2.5f, 4.5f, 9.5f, 10.5f, 11.5f, 12.5f, 14.5f, 16.5f, 17.5f, 18.5f, 19.5f });
+        /*5*/ /*Y = 3.5*/ listOfX.Add(new List<float> { -18.5f, -12.5f, -8.5f, -6.5f, -5.5f, -4.5f, -3.5f, 4.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 12.5f, 14.5f, 19.5f });
+        /*6*/ /*Y = 2.5*/ listOfX.Add(new List<float> { -18.5f, -17.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -11.5f, -10.5f, -9.5f, -8.5f, -7.5f, -6.5f, -3.5f, 4.5f, 9.5f, 11.5f, 12.5f, 13.5f, 14.5f, 15.5f, 16.5f, 17.5f, 18.5f, 19.5f });
+        /*7*/ /*Y = 1.5*/ listOfX.Add(new List<float> { -12.5f, -10.5f, -6.5f, -3.5f, 4.5f, 9.5f, 11.5f, 13.5f });
+        /*8*/ /*Y = 0.5*/ listOfX.Add(new List<float> { -12.5f, -10.5f, -9.5f, -6.5f, -3.5f, 4.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 11.5f, 13.5f });
+        /*9*/ /*Y = -0.5*/ listOfX.Add(new List<float> { -12.5f, -8.5f, -6.5f, -3.5f, 4.5f, 9.5f, 11.5f, 13.5f });
+        /*10*/ /*Y = -1.5*/ listOfX.Add(new List<float> { -12.5f, -10.5f, -9.5f, -8.5f, -7.5f, -6.5f, -5.5f, -4.5f, -3.5f, 4.5f, 9.5f, 11.5f, 13.5f });
+        /*11*/ /*Y = -2.5*/ listOfX.Add(new List<float> { -12.5f, -10.5f, -8.5f, -3.5f, 4.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 10.5f, 11.5f, 13.5f });
+        /*12*/ /*Y = -3.5*/ listOfX.Add(new List<float> { -18.5f, -17.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -11.5f, -10.5f, -8.5f, -7.5f, -6.5f, -5.5f, -3.5f, 4.5f, 9.5f, 13.5f, 14.5f, 15.5f, 16.5f, 17.5f, 18.5f, 19.5f });
+        /*13*/ /*Y = -4.5*/ listOfX.Add(new List<float> { -18.5f, -12.5f, -10.5f, -5.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f, 7.5f, 9.5f, 10.5f, 11.5f, 13.5f, 19.5f });
+        /*14*/ /*Y = -5.5*/ listOfX.Add(new List<float> { -18.5f, -12.5f, -10.5f, -8.5f, -7.5f, -6.5f, -5.5f, -4.5f, -3.5f, 3.5f, 7.5f, 9.5f, 11.5f, 13.5f, 19.5f });
+        /*15*/ /*Y = -6.5*/ listOfX.Add(new List<float> { -17.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -10.5f, -8.5f, -3.5f, -2.5f, -1.5f, -0.5f, 1.5f, 2.5f, 3.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 11.5f, 12.5f, 13.5f, 14.5f, 15.5f, 16.5f, 17.5f, 18.5f, 19.5f });
+        /*16*/ /*Y = -7.5*/ listOfX.Add(new List<float> { -18.5f, -14.5f, -12.5f, -11.5f, -10.5f, -9.5f, -8.5f, -2.5f, -0.5f, 1.5f, 3.5f, 4.5f, 5.5f, 7.5f, 9.5f, 11.5f, 19.5f });
+        /*17*/ /*Y = -8.5*/ listOfX.Add(new List<float> { -18.5f, -14.5f, -12.5f, -9.5f, -6.5f, -5.5f, -4.5f, -2.5f, -0.5f, 1.5f, 7.5f, 9.5f, 11.5f, 19.5f });
+        /*18*/ /*Y = -9.5*/ listOfX.Add(new List<float> { -18.5f, -17.5f, -16.5f, -15.5f, -14.5f, -13.5f, -12.5f, -11.5f, -10.5f, -9.5f, -8.5f, -7.5f, -6.5f, -4.5f, -3.5f, -2.5f, -0.5f, 0.5f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f, 7.5f, 8.5f, 9.5f, 12.5f, 13.5f, 14.5f, 15.5f, 16.5f, 17.5f, 18.5f, 19.5f });
 
     }
 
