@@ -11,6 +11,8 @@ using UnityEngine.SocialPlatforms.Impl;
  Created In:  26/03/2024
  Last Update: 02/04/2024
 
+Function: Dealing with score and highscore, and all game actions
+
  */
 
 public class GameController : MonoBehaviour
@@ -19,27 +21,22 @@ public class GameController : MonoBehaviour
     #region Components
 
     //Private
-    public static float score;
-    private int _collectibles = 0;
     [SerializeField] private TextMeshProUGUI scoreLabel;
     [SerializeField] private TextMeshProUGUI highScoreLabel;
+
+    private int _collectibles = 0;
+    
 
     //--------------------------------------------------
 
     //Public
-
-    /*public float score
-    {
-        get { return _score; }
-        set { _score = value; }
-    }
-    */
     public int collectibles
     {
         get { return _collectibles; }
         set { _collectibles = value; }
     }
 
+    public static float score;
     public static float highScore;
 
     #endregion
@@ -52,14 +49,13 @@ public class GameController : MonoBehaviour
         Debug.Log("Start - High Score: " + highScore);
         highScoreLabel.text = highScore.ToString();
         score = 0f;
-        _collectibles += 6;
     }
 
     //Update
     private void Update()
     {
         scoreLabel.text = score.ToString();
-        WinGame();
+        CheckIfWinGame();
     }
 
     #endregion
@@ -93,7 +89,7 @@ public class GameController : MonoBehaviour
     }
 
     //WinGame
-    public void WinGame()
+    public void CheckIfWinGame()
     {
         if(_collectibles == 0)
         {
@@ -113,4 +109,5 @@ public class GameController : MonoBehaviour
     }
 
     #endregion
+
 }

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 28/03/2024
+ Last Update: 02/04/2024
 
  Function: Dealing with player's animations
 
@@ -33,7 +33,6 @@ public class PlayerAnimator : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         animator = GetComponent<Animator>();
-
     }
 
     //Update
@@ -50,31 +49,32 @@ public class PlayerAnimator : MonoBehaviour
     void OnMove()
     {
         //ANIMATIONS
-        if (player.direction.sqrMagnitude > 0)
+        if (player.movingDirection != null)
         {
             animator.SetInteger("transition", 1);
         }
 
         //ROTATING
-        if (player.direction.x > 0 && Time.timeScale == 1) //Right
+        if (player.movingDirection == "right" && Time.timeScale == 1) //Right
         {
             transform.eulerAngles = new Vector2(0, 0);
         }
 
-        if (player.direction.x < 0 && Time.timeScale == 1) //Left
+        if (player.movingDirection == "left" && Time.timeScale == 1) //Left
         {
             transform.eulerAngles = new Vector2(0, 180);
         }
 
-        if (player.direction.y > 0 && Time.timeScale == 1) //Up
+        if (player.movingDirection == "up" && Time.timeScale == 1) //Up
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
         }
 
-        if (player.direction.y < 0 && Time.timeScale == 1) //Down
+        if (player.movingDirection == "down" && Time.timeScale == 1) //Down
         {
             transform.eulerAngles = new Vector3(0, 0, -90);
         }
     }
     #endregion
+
 }

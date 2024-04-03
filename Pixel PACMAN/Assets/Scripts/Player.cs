@@ -21,20 +21,26 @@ public class Player : MonoBehaviour
     #region Components
 
     //Private
-    private float speed;
-    private Rigidbody2D rb;
-    private Vector2 _direction;
-    public GameController gameController;
-    private List<string> directionCode;
-    private float rayDistance;
     [SerializeField] private LayerMask rayLayer;
+    private Rigidbody2D rb;
+    public GameController gameController;
+    private float speed;
+
+    //Items
+    [SerializeField] private GameObject currentItem;
+    [SerializeField] private GameObject itemInPortalRight;
+    [SerializeField] private GameObject itemInPortalLeft;
+    [SerializeField] private GameObject itemInPortalUp;
+    [SerializeField] private GameObject itemInPortalDown;
+    private string _movingDirection;
+    private string lastMovingDirection;
 
     //Portals
-    private int portalsTimer;
     [SerializeField] private GameObject portalLeft;
     [SerializeField] private GameObject portalRight;
     [SerializeField] private GameObject portalUp;
     [SerializeField] private GameObject portalDown;
+    private int portalsTimer;
 
     //Ghosts
     [SerializeField] private GameObject redGhost;
@@ -49,10 +55,10 @@ public class Player : MonoBehaviour
     //--------------------------------------------------
 
     //Public
-    public Vector2 direction
+    public string movingDirection
     {
-        get { return _direction; }
-        set { _direction = value; }
+        get { return _movingDirection; }
+        set { _movingDirection = value; }
     }
     #endregion
 
@@ -64,8 +70,10 @@ public class Player : MonoBehaviour
         //Player
         rb = GetComponent<Rigidbody2D>();
         speed = 5f;
-        directionCode = new List<string>() { "L" };
-        rayDistance = (float)0.5;
+
+        //Items
+        _movingDirection = "";
+        lastMovingDirection = "";
 
         //Portals
         portalsTimer = 30;
@@ -106,44 +114,55 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) //Up
         {
-            _direction = Vector2.up;
+            _movingDirection = "up";
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) //Left
         {
-            _direction = Vector2.left;
+            _movingDirection = "left";
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) //Down
         {
-            _direction = Vector2.down;
+            _movingDirection = "down";
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) //Right
         {
-            _direction = Vector2.right;
+            _movingDirection = "right";
         }
-        _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
     //OnMove
     void OnMove()
     {
-        rb.MovePosition(rb.position + _direction * speed * Time.fixedDeltaTime);   
-    }
+        ItemsController currentItemController = currentItem.GetComponent<ItemsController>();
 
-    //CheckIfCanMoveDirection
-    bool CheckIfCanMoveDirection(Vector2 direction)
-    {
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, direction, rayDistance, rayLayer);
-        Vector3 endPoint = transform.position * rayDistance;
+        transform.position = Vector2.MoveTowards(transform.position, currentItem.transform.position, speed * Time.deltaTime);
 
-        Debug.DrawLine(transform.position, transform.position + endPoint, Color.green);
-        if (hit2D.collider == null)
+        //Checking if the player are in the center of the current Item
+        if (transform.position == currentItem.transform.position)
         {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+            //Getting the new Item based in our desired direction
+            GameObject newItem = currentItemController.GetItemFromDirection(_movingDirection);
+
+            //If the player can move in the desired direction
+            if (newItem != null)
+            {
+                currentItem = newItem;
+                lastMovingDirection = _movingDirection;
+            }
+            //If the player can't move in the desired direction, try to keep going in the last moving direction
+            else
+            {
+                _movingDirection = lastMovingDirection;
+                newItem = currentItemController.GetItemFromDirection(_movingDirection);
+
+                if (newItem != null)
+                {
+                    currentItem = newItem;
+                }
+
+            }
+
+        }  
     }
 
     #endregion
@@ -164,7 +183,6 @@ public class Player : MonoBehaviour
         //Collecting Great Items
         if (collision.gameObject.tag == "GreatItem")
         {
-            Debug.Log("COLLISION - GREAT ITEM");
             collision.gameObject.SetActive(false);
             gameController.collectibles--;
             GameController.score += 50;
@@ -190,6 +208,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Collision with Portal Left");
             gameObject.transform.localPosition = portalRight.transform.localPosition;
+            currentItem = itemInPortalRight;
             portalsTimer = 30;
         }
 
@@ -197,6 +216,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Collision with Portal Right");
             gameObject.transform.localPosition = portalLeft.transform.localPosition;
+            currentItem = itemInPortalLeft;
             portalsTimer = 30;
         }
 
@@ -204,6 +224,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Collision with Portal Up");
             gameObject.transform.localPosition = portalDown.transform.localPosition;
+            currentItem = itemInPortalDown;
             portalsTimer = 30;
         }
 
@@ -211,6 +232,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Collision with Portal Down");
             gameObject.transform.localPosition = portalUp.transform.localPosition;
+            currentItem = itemInPortalUp;
             portalsTimer = 30;
         }
     }

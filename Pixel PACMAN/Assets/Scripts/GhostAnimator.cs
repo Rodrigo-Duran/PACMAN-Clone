@@ -7,7 +7,7 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  19/03/2024
- Last Update: 28/03/2024
+ Last Update: 02/04/2024
 
  Function: Dealing with ghosts' animations  
 
@@ -42,13 +42,13 @@ public class GhostAnimator : MonoBehaviour
 
     #endregion
 
-    #region MovementHandler
+    #region MovementAnimationHandler
 
     //OnMove
     void OnMove()
     {
         //ANIMATIONS
-        if (ghost.isAlive)
+        if (ghost.isAlive) //Alive
         {
             if (ghost.direction == 1 && !ghost.vulnerability) //Right
             {
@@ -76,7 +76,7 @@ public class GhostAnimator : MonoBehaviour
                 if(ghost.almostOk) animator.SetInteger("transition", 10);
             }
         }
-        else
+        else //Dead
         {
             if (rb.position.x > 0) //Right
             {
@@ -100,4 +100,5 @@ public class GhostAnimator : MonoBehaviour
         }
     }
     #endregion
+
 }

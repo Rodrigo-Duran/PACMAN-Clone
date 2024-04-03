@@ -9,6 +9,8 @@ using UnityEngine;
  Created In:  01/04/2024
  Last Update: 02/04/2024
 
+ Function: Dealing with ghosts' AI Movement
+
  */
 
 public class GhostAIMovement : MonoBehaviour
@@ -17,16 +19,17 @@ public class GhostAIMovement : MonoBehaviour
     #region Components
 
     //Private
-    private Rigidbody2D rb;
     [SerializeField] private GameObject spawnPoint;
-    private Vector2[] directions = { Vector2.up, Vector2.right, Vector2.down, Vector2.left};
-    private int directionIndex;
-    private Vector2 currentDirection;
-    private Ghost ghost;
-    private float rayDistance;
     [SerializeField] private LayerMask rayLayer;
-    
+    [SerializeField] private GameObject startingMovingPoint;
+    private Rigidbody2D rb;
+    private Ghost ghost;
+    private Vector2 currentDirection;
+    private Vector2[] directions = { Vector2.up, Vector2.right, Vector2.down, Vector2.left};
 
+    private int directionIndex;
+    private float rayDistance;
+    
     #endregion
 
     #region MainMethods
@@ -79,7 +82,6 @@ public class GhostAIMovement : MonoBehaviour
 
         if (hit2D.collider != null)
         {
-            //Debug.Log("COLLIDE WITH WALL");
             ChangeDirection();
         }
     }
@@ -103,10 +105,12 @@ public class GhostAIMovement : MonoBehaviour
     //MoveToSpawnPoint
     public void MoveToSpawnPoint()
     {
-        Vector2 direction = new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y) - rb.position;
-        rb.MovePosition(rb.position + direction * ghost.speed * Time.fixedDeltaTime);
+        Vector2 spawnPointDirection = new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y) - rb.position;
+        rb.MovePosition(rb.position + spawnPointDirection * ghost.speed * Time.fixedDeltaTime);
         if (rb.position == new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y))
         {
+            Vector2 startingMovingPointDirection = new Vector2(startingMovingPoint.transform.position.x, startingMovingPoint.transform.position.y) - rb.position;
+            rb.MovePosition(rb.position + startingMovingPointDirection * ghost.speed * Time.fixedDeltaTime);
             ghost.isAlive = true;
             this.gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
             Debug.Log("GHOST ALIVE AGAIN");
@@ -115,4 +119,5 @@ public class GhostAIMovement : MonoBehaviour
     }
 
     #endregion
+
 }

@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  27/03/2024
- Last Update: 27/03/2024
+ Last Update: 02/04/2024
+
+ Function: Dealing with MainMenu Scene
 
  */
 

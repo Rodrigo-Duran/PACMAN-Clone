@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  28/03/2024
- Last Update: 28/03/2024
+ Last Update: 02/04/2024
+
+ Function: Dealing with GameWin Scene
 
  */
 
@@ -17,10 +19,11 @@ public class GameWinController : MonoBehaviour
     #region Components
 
     //Private
+    [SerializeField] private TextMeshProUGUI scoreLabel;
+
     private float _highScore = GameController.highScore;
     private float _score = GameController.score;
-    [SerializeField] private TextMeshProUGUI scoreLabel; 
-
+    
     #endregion
 
     #region MainMethods
@@ -49,4 +52,5 @@ public class GameWinController : MonoBehaviour
     }
 
     #endregion
+
 }

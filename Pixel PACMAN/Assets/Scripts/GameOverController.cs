@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  27/03/2024
- Last Update: 28/03/2024
+ Last Update: 02/04/2024
+
+ Function: Dealing with GameOver Scene
 
  */
 
@@ -17,9 +19,10 @@ public class GameOverController : MonoBehaviour
     #region Components
 
     //Private
+    [SerializeField] private TextMeshProUGUI scoreLabel;
+
     private float _highScore = GameController.highScore;
     private float _score = GameController.score;
-    [SerializeField] private TextMeshProUGUI scoreLabel;
 
     #endregion
 
@@ -49,4 +52,5 @@ public class GameOverController : MonoBehaviour
     }
 
     #endregion
+
 }

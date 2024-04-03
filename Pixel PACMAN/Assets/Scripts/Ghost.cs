@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
  Created In:  19/03/2024
  Last Update: 02/04/2024
 
- Function: Dealing with ghosts' mechanichs
+ Function: Dealing with some ghosts' mechanichs
 
  */
 
@@ -37,6 +37,9 @@ public class Ghost : MonoBehaviour
     //--------------------------------------------------
 
     //Public
+    public IEnumerator e;
+    public GameController gameController;
+
     public int direction
     {
         get { return _direction; }
@@ -64,9 +67,6 @@ public class Ghost : MonoBehaviour
         get { return _speed; }
         set { _speed = value; }
     }
-
-    public IEnumerator e;
-    public GameController gameController;
 
     #endregion
 
@@ -145,7 +145,6 @@ public class Ghost : MonoBehaviour
 
         if (collision.gameObject.tag == "Ghost")
         {
-            //Debug.Log("ENTER COLLISION");
             cc.isTrigger = true;
         }
     }
@@ -154,7 +153,6 @@ public class Ghost : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ghost") 
         {
-            //Debug.Log("EXIT COLLISION");
             cc.isTrigger = false; 
         }
     }
@@ -162,7 +160,7 @@ public class Ghost : MonoBehaviour
     //Death
     void Death()
     {
-        Debug.Log("GHOST DIED"); ;
+        Debug.Log("GHOST DIED");
         _isAlive = false;
         GameController.score += 1000;
         StopCoroutine(MakeVulnerable());
@@ -170,8 +168,8 @@ public class Ghost : MonoBehaviour
         _almostOk = false;
         _speed = 5f;
         this.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-        Debug.Log("Ghost is Alive? " + _isAlive);
     }
 
     #endregion
+
 }
