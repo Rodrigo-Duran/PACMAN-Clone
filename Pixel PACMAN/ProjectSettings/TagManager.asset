@@ -8,6 +8,8 @@ TagManager:
   - Portal
   - GreatItem
   - NormalItem
+  - SpawnPointBox
+  - SpawnBoxLine
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Items
-  - 
+  - Ghost
   - 
   - 
   - 

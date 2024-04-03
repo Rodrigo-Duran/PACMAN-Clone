@@ -7,7 +7,7 @@ using UnityEngine;
 
  Created By:  Rodrigo Duran Daniel
  Created In:  01/04/2024
- Last Update: 02/04/2024
+ Last Update: 03/04/2024
 
  Function: Dealing with ghosts' AI Movement
 
@@ -53,23 +53,24 @@ public class GhostAIMovement : MonoBehaviour
     {
         if (ghost.isAlive)
         {
-            rb.MovePosition(rb.position + currentDirection * ghost.speed * Time.fixedDeltaTime);
+            if (ghost.isPossibleToWalk)
+            {
+                rb.MovePosition(rb.position + currentDirection * ghost.speed * Time.fixedDeltaTime);
 
-            if (currentDirection == Vector2.right)
-                ghost.direction = 1;
-            if (currentDirection == Vector2.left)
-                ghost.direction = -1;
-            if (currentDirection == Vector2.up)
-                ghost.direction = 2;
-            if (currentDirection == Vector2.down)
-                ghost.direction = -2;
-            
+                if (currentDirection == Vector2.right)
+                    ghost.direction = 1;
+                if (currentDirection == Vector2.left)
+                    ghost.direction = -1;
+                if (currentDirection == Vector2.up)
+                    ghost.direction = 2;
+                if (currentDirection == Vector2.down)
+                    ghost.direction = -2;
+            }
         }
         else
         {
             MoveToSpawnPoint();
         }
-        
     }
 
     //OnCheck
@@ -109,13 +110,21 @@ public class GhostAIMovement : MonoBehaviour
         rb.MovePosition(rb.position + spawnPointDirection * ghost.speed * Time.fixedDeltaTime);
         if (rb.position == new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y))
         {
-            Vector2 startingMovingPointDirection = new Vector2(startingMovingPoint.transform.position.x, startingMovingPoint.transform.position.y) - rb.position;
-            rb.MovePosition(rb.position + startingMovingPointDirection * ghost.speed * Time.fixedDeltaTime);
             ghost.isAlive = true;
-            this.gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
-            Debug.Log("GHOST ALIVE AGAIN");
-            return;
         }
+    }
+
+    //MovingToStartingMovingPoint
+    public void MoveToStartingMovingPoint()
+    {
+        rb.MovePosition(rb.position + Vector2.up * ghost.speed * Time.deltaTime);
+    }
+
+    //ExitSpawnPointBox
+    public void ExitSpawnPointBox()
+    {
+        ghost.isPossibleToWalk = true;
+        this.gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
     }
 
     #endregion
